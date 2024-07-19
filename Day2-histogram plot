@@ -1,0 +1,21 @@
+# Load necessary library
+library(ggplot2)
+
+# Create the data frame
+data <- data.frame(
+  Month = rep(c("Jan", "Feb", "Mar"), each = 3),
+  Employee = rep(c("A", "B", "C"), times = 3),
+  Score = c(85, 90, 78, 88, 92, 80, 90, 94, 82)
+)
+
+# Print the data
+print(data)
+
+# Create a histogram plot using ggplot2
+ggplot(data, aes(x = Score, fill = Employee)) +
+  geom_histogram(binwidth = 5, position = "dodge", alpha = 0.7) +
+  facet_wrap(~ Month) +
+  labs(title = "Monthly Performance Scores of Employees",
+       x = "Score",
+       y = "Frequency") +
+  theme_minimal()
